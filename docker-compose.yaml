@@ -14,8 +14,8 @@ services:
   payment-db:
     build: postgres:14.2-alpine
     environment:
-      POSTGRES_USER: myUser
-      POSTGRES_PASSWORD: myPassword
+      POSTGRES_USER:
+      POSTGRES_PASSWORD:
       POSTGRES_DB: purchase_db
     ports:
       - "6000:5432"
