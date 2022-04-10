@@ -1,21 +1,27 @@
 version: '3.8'
-
+volumes: #need to write the volumes name in order to store data.
+  postgres-db:
 services:
   payment-service:
     build: .
     environment:
-      POSTGRES_USER:
-      POSTGRES_PASSWORD:
+      POSTGRES_USER: myUser
+      POSTGRES_PASSWORD: myPassword
       POSTGRES_DB: payment_db
-    ports:
-      - "6000:5000"
+    ports: #because the first service runs on 6000,for avoiding port conflict it must run on a different post
+
+      - "8888:5000"
+    depends_on: #because it says payment-service must depend on payment-db
+      - payment-db
   payment-db:
-    build: postgres:14.2-alpine
+    image: postgres:14.2-alpine #we use image because the postgres already created, and we can use it
     environment:
-      POSTGRES_USER:
-      POSTGRES_PASSWORD:
+      POSTGRES_USER: myUser
+      POSTGRES_PASSWORD: myPassword
       POSTGRES_DB: payment_db
     ports:
       - "6000:5432"
     volumes:
-      - payment-db-vol:/var/lib/postgresql/data
+      - postgres-db:/var/lib/postgresql/data #for mapping the volume ,first need to write volume's name
+                                             #that mentioned above(Named volume)
+

@@ -1,0 +1,60 @@
+1. How would you explain docker's benefits to a colleague that has never heard of it? Include at least 2 benefits
+Docker is containerization platform that allows you to package your application and all its dependencies
+which is needed to make an app run, so in this way.it can be portable and  run and works correctly
+ on any environment and any system.
+ another benefits of Docker, is that it makes your application isolated from other apps.
+ regardless of where  the app is deployed, everything remains consistent and it helps you during the
+  various stages of development,you can be sure that an image of your application is independent of docker
+ images and container of other apps.
+
+
+2. A colleague would like to build an application that consists of multiple services:
+
+shopping-front (frontend for the shopping service)
+shopping-back (backend for the shopping service)
+shopping-db (database for the shopping service)
+
+They are wondering if docker-compose would be useful in their deployment.
+What is your opinion? Do you think they should use docker-compose for deployment,
+or is it better to use the docker pull/run commands? Please explain reasoning behind decision.
+It think it would be better and easier to use Docker compose file.
+docker compose file is a runtime configuration file that allows us to run different services and having multiple
+containers that can interact with eah other.
+if we use docker pull/run commands we need to do the the commands for each services and it's not easy for
+apps that has multiple services but docker compose file do build the image and run the container with one
+command so it saves time. docker compose file is an easy way to manage an app with multiple containers.
+it allows us to give the port, define the volume and everything we need in the file.It is creating and running
+by one command.
+
+3. Give a specific example/use-case of why you would add a docker volume to a container. What are volumes used for?
+by default all the data inside the containers would be lost if we stopped the container so it's so important that
+ we can save and keep our data ,so docker volume is the best way to save data.
+Docker volume is the directory and files in host file system outside of the container, it's used to persist
+data and also share the data between containers.
+For example, a university or school has an application. they wanted students to upload some documents in their
+profile. in this case , if we don't use docker volume. if our containers just destroyed or stopped
+we would lose all the student's documents and it's not acceptable for students/users that each time they
+upload their documents again but when we add Docker volume the documents  will be saved and safe
+in the local machine we use in school.
+
+4. From the following list, add either RUNTIME or BUILDTIME for the following elements:
+(are they executed/used at runtime or build time?)
+
+- docker run-------- run time
+- docker build ----- build time
+- docker-compose up ----- run time and build time(both)
+- Dockerfile------- build time
+- docker logs -f <container_id>------ run time
+- publishing ports--------- run time
+- pip install -r requirements.txt------build time
+- CMD flask run --host=0.0.0.0--------run time
+
+5. What is the difference between a host port and a container port? What is their relationship to each other?
+
+Host port is the port on the host machine to bind to,
+Container port is the port in the container,one which your containerized app should listen on.
+by default when you run a container it does not publish any of its ports to the outside world so it is not accessible
+to out side.To make docker container available to outside of Docker, we have to map a container's port
+to the host port.you can choose a port on host machine and map it with the container port.
+using this command: docker run -d -p host's port: container's port  image_name
+ in this way the docker container service would be available to the outside world.
