@@ -1,5 +1,5 @@
 version: '3.8'
-#we need to add Flask-SQLAlchemy and psycopg2-binary as we are using postgres sql. Added below requirements
+#we need to add Flask-SQLAlchemy and psycopg2-binary as we are using postgres sql
 #adding Volume to store persistent data for the database which is getting deployed as a dependent service to payment service
 volumes:
   payment-db-vol:

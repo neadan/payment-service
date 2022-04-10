@@ -1,0 +1,60 @@
+1. How would you explain docker's benefits to a colleague that has never heard of it? Include at least 2 benefits
+
+	Docker is a tool which leverages OS level virtualization and used to simplify the creation and deployment of applications by using the concept of containers. In layman, you can package your code with dependencies into a deployable unit called a container. 
+
+	Few of the benefits :
+		- Using containers developers can create predictable environments that are isolated from other apps
+		- You are building code with repeatable infrastructure and config. This speeds up the development process
+		- Docker images are free of environmental limitations, and that makes any deployment consistent, portable, and scalable
+	
+2. A colleague would like to build an application that consists of multiple services:
+
+shopping-front (frontend for the shopping service)
+shopping-back (backend for the shopping service)
+shopping-db (database for the shopping service)
+
+They are wondering if docker-compose would be useful in their deployment.
+What is your opinion? Do you think they should use docker-compose for deployment,
+or is it better to use the docker pull/run commands? Please explain reasoning behind decision.
+
+Yes they should use docker compose for deploying the above said three-tier architecture. 
+
+	- Docker Compose is a Docker tool used to define and run multi-container applications. Think of docker-compose as an automated multi-container workflow.
+	- Docker Compose will help to create multiple isolated environments in a single host. 
+	- Preserve volume data when containers are created (For database in this scenario)
+	- Orchestrate multiple containers that work together (Separate container for Front end, Backend and Databases can be created with help of single docker compose yaml file)
+	- You can use docker-compose for repetable deployments with changing the actual code only runtime environment variables will be 
+	- Also you can have separate version for each docker compose. It will help you to revert back to earlier version quickly.
+	
+
+
+3. Give a specific example/use-case of why you would add a docker volume to a container. What are volumes used for?
+
+	- Primary use of adding a docker volume to a container is to preserve data (Persistent data)
+	- Also we can share data among multiple containers 
+	
+	I am lending question 2 as my example, if we doesn't use volumes for third microservice shopping-db. If for any instance the shopping-db service went down we will loose all information stored for the customers shopping details. At same time if we might have use docker volumes, even if we destory the container and deploy with new version of the application. We can still retrive all data of the customers as data is persistent now. 
+
+4. From the following list, add either RUNTIME or BUILDTIME for the following elements:
+(are they executed/used at runtime or build time?)
+
+- docker run					--> RUNTIME 	
+- docker build					--> BUILDTIME
+- docker-compose up -d			--> RUNTIME
+- Dockerfile					--> BUILDTIME
+- docker logs -f <container_id> --> RUNTIME
+- publishing ports				--> RUNTIME
+- pip install -r requirements.txt --> BUILDTIME
+- CMD flask run --host=0.0.0.0	-->	BUILDTIME
+
+5. What is the difference between a host port and a container port? What is their relationship to each other?
+
+	- The port in which your containerized app should listen is conatiner
+	- Whereas host port is the port in which your container actual runs the application in the deployed host, as we are customizing actual container to new host port
+	
+	Illustrating an example to define the relationship 
+	
+	Container port for a flask application is port 5000 as the default port for any flask app is defined. 
+	But we port mapp (Expose or publish) our application to port 6000 using Expose in Dockerfile or docker run -p 6000:5000 [host port:container port]
+	
+	In above example instead of running the application in port 5000 for external users, the suers were now forced to use port 6000 for accessing the web application.
