@@ -1,0 +1,35 @@
+1. How would you explain docker's benefits to a colleague that has never heard of it? Include at least 2 benefits
+  i) Portability.
+     Once you have tested your containerized application you can deploy it to any other system where   Docker is running and you can be sure that your application will perform exactly as it did when you tested it.
+  ii) Performance
+    Although virtual machines are an alternative to containers, the fact that containers do not contain an operating system (whereas virtual machines do) means that containers have much smaller footprints than virtual machines, are faster to create, and quicker to start.
+2. A colleague would like to build an application that consists of multiple services:
+
+shopping-front (frontend for the shopping service)
+shopping-back (backend for the shopping service)
+shopping-db (database for the shopping service)
+
+They are wondering if docker-compose would be useful in their deployment.
+What is your opinion? Do you think they should use docker-compose for deployment,
+or is it better to use the docker pull/run commands? Please explain reasoning behind decision.
+    Docker compose will be the best option in this case. Since there three services that need to be deployed independently,docker compose will able to accomadate all of them while  as with docker,u can only deploy one conatiner at a time. This saves time and resources since they all share the same docker engine. This makes a single host platform
+
+
+3. Give a specific example/use-case of why you would add a docker volume to a container. What are volumes used for?
+    For example ,lets say i have a two application each on there on container,and they all share some avatars that are company brand signature and i want to use in both of my app,i will use docker volume to make sure the file system directory is both available to both for use . this save space and avoid redundancy.
+4. From the following list, add either RUNTIME or BUILDTIME for the following elements:
+(are they executed/used at runtime or build time?)
+
+- docker run BUILDTIME
+- docker build  BUILDTIME
+- docker-compose up -d RUNTIME
+- Dockerfile BUILDTIME
+- docker logs -f <container_id> RUNTIME
+- publishing ports RUNTIME
+- pip install -r requirements.txt BUILDTIME
+- CMD flask run --host=0.0.0.0 RUNTIME
+
+5. What is the difference between a host port and a container port? What is their relationship to each other?
+
+       Host port - this is the port on the underlying OS that listens actually
+       Container port - this the port on the container that host port traffic is forwarded
