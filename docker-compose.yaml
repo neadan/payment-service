@@ -6,7 +6,7 @@ services:
     environment:
       POSTGRES_USER:
       POSTGRES_PASSWORD:
-      POSTGRES_DB: purchase_db
+      POSTGRES_DB: payment_db
     ports:
       - "6000:5000"
   payment-db:
@@ -14,7 +14,7 @@ services:
     environment:
       POSTGRES_USER:
       POSTGRES_PASSWORD:
-      POSTGRES_DB: purchase_db
+      POSTGRES_DB: payment_db
     ports:
       - "6000:5432"
     volumes:
