@@ -1,0 +1,47 @@
+1. How would you explain docker's benefits to a colleague that has never heard of it? Include at least 2 benefits
+
+    - The standardization, because docker enables repeatable and replicable development, build, test, and production environments without the need to share huge files.
+    - Docker allows you to create a container image and use that same image throughout the deployment process. A big advantage of this is the ability to separate
+      non-process dependent steps and execute them in parallel.
+
+2. A colleague would like to build an application that consists of multiple services:
+
+shopping-front (frontend for the shopping service)
+shopping-back (backend for the shopping service)
+shopping-db (database for the shopping service)
+
+They are wondering if docker-compose would be useful in their deployment.
+What is your opinion? Do you think they should use docker-compose for deployment,
+or is it better to use the docker pull/run commands? Please explain reasoning behind decision.
+
+    - Yes, they should use docker-compose. Docker saves time, gives you more speed, portability, isolation and security,
+    which makes application development and testing much easier, and by not having to boot an operating system as in a VM,
+    a Docker container is capable of booting immediately or in a matter of seconds.You are ready to run your multi-container application.
+    To boot all three components at once, and the depends_on property will help you start the services in order,
+    since the frontend can't work properly if the backend isn't started and the backend won't work if the database isn't ready yet.
+
+
+3. Give a specific example/use-case of why you would add a docker volume to a container. What are volumes used for?
+
+    - If I want to freed space and I need to delete a container, I still can have the information thanks to the volume and use it in another container.
+    - They are used to store and exchange information independently of the life of a container.
+        They allow us to store and exchange information between containers.
+        When we delete the container, the associated volume is not deleted.
+
+4. From the following list, add either RUNTIME or BUILDTIME for the following elements:
+(are they executed/used at runtime or build time?)
+
+(They are executed at runtime)
+
+- docker run
+- docker build
+- docker-compose up -d
+- Dockerfile
+- docker logs -f <container_id>
+- publishing ports
+- pip install -r requirements.txt
+- CMD flask run --host=0.0.0.0
+
+5. What is the difference between a host port and a container port? What is their relationship to each other?
+
+    - The container port is specifies the port on the container (IP) and host port is the port on the machine where we want to bid it.

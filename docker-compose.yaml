@@ -1,21 +1,29 @@
 version: '3.8'
+# Error1: the volumes, payment-db-vol was not defined.
+volumes:
+  payment-db-vol:
 
 services:
   payment-service:
     build: .
     environment:
-      POSTGRES_USER:
-      POSTGRES_PASSWORD:
+      POSTGRES_USER: myUser
+      POSTGRES_PASSWORD: myPassword
       POSTGRES_DB: payment_db
     ports:
-      - "6000:5000"
+      - "5000:5000" #Error2: there was a conflict with the ports, I changed them in the first and second services
+    depends_on:
+      - payment-db
   payment-db:
-    build: postgres:14.2-alpine
+    image: postgres:14.2-alpine #Error3: In the service payment-db should thake an
+                                #image from postgres:14.2-alpine intead of build
     environment:
-      POSTGRES_USER:
-      POSTGRES_PASSWORD:
+      POSTGRES_USER: myUser
+      POSTGRES_PASSWORD: myPassword
       POSTGRES_DB: payment_db
     ports:
-      - "6000:5432"
+      - "5432:5432"
     volumes:
       - payment-db-vol:/var/lib/postgresql/data
+
+
