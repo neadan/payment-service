@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+  payment-service:
+    build: .
+    environment:
+      POSTGRES_USER:
+      POSTGRES_PASSWORD:
+      POSTGRES_DB: purchase_db
+    ports:
+      - "6000:5000"
+    depends_on:
+      - payment-db
+  payment-db:
+    build: postgres:14.2-alpine
+    environment:
+      POSTGRES_USER: myUser
+      POSTGRES_PASSWORD: myPassword
+      POSTGRES_DB: purchase_db
+    ports:
+      - "6000:5432"
+    volumes:
+      - payment-db-vol:/var/lib/postgresql/data
