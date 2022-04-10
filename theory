@@ -1,0 +1,35 @@
+1. How would you explain docker's benefits to a colleague that has never heard of it? Include at least 2 benefits
+- Platform independent: Docker containers are platform independent as these can run on any system
+- Better Performance: It has better performance as it is independent of OS, these can be created quickly and faster to start
+
+2. A colleague would like to build an application that consists of multiple services:
+
+shopping-front (frontend for the shopping service)
+shopping-back (backend for the shopping service)
+shopping-db (database for the shopping service)
+
+They are wondering if docker-compose would be useful in their deployment.
+What is your opinion? Do you think they should use docker-compose for deployment,
+or is it better to use the docker pull/run commands? Please explain reasoning behind decision.
+- Using docker-compose will be helpful as it can handle all the services in one file, otherwise we need to run each service separately
+
+3. Give a specific example/use-case of why you would add a docker volume to a container. What are volumes used for?
+- We will add volumes to the container to make our application scalable by attaching same volume to multiple containers which can share data,
+For example one docker container goes down we can attach same volume to another container with same data
+
+4. From the following list, add either RUNTIME or BUILDTIME for the following elements:
+(are they executed/used at runtime or build time?)
+
+- docker run: RUNTIME
+- docker build: BUILDTIME
+- docker-compose up -d: RUNTIME
+- Dockerfile: BUILDTIME
+- docker logs -f <container_id>: RUNTIME
+- publishing ports: RUNTIME
+- pip install -r requirements.txt: BUILDTIME
+- CMD flask run --host=0.0.0.0: RUNTIME
+
+5. What is the difference between a host port and a container port? What is their relationship to each other?
+- Container port will be the port on which app will be running, and docker host port will be the port
+that will be published to users.
+So container port will be mapped to host port which will allow user to access app via host port
