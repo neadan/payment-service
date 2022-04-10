@@ -37,6 +37,8 @@ Ans: We bind a port to a container
 - Named volumes should be used in production, host volumes are better for development
 - You cannot bind multiple applications to the same port
 
+Ans: Named volumes should be used in production, host volumes are better for development
+
 6. Which statement is TRUE (only 1)
 
 - Environment variables are given to the program at runtime
