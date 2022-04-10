@@ -1,0 +1,64 @@
+1. Which statement is TRUE (only 1)
+
+- We run images, and build containers
+- We build images, and run containers ==== (V)
+- We build ports, and run volumes
+- We build volumes, and run ports
+
+2. What happens to the data inside a container when we stop it? (If there is no volume)
+
+- We can retrieve it in /var/log/docker
+- The data is lost
+- We can restart the container to retrieve the data
+- We cannot stop a container that has no volume ==== (V)
+
+3. True or False?
+If appA depends on appB, then appB will not start unless appA is up.
+==== (V)
+
+4. Which statement is TRUE (only 1)
+
+- We bind a port to an image
+- We bind a port to a dockerfile
+- We bind a port to docker-desktop
+- We bind a port to a container
+
+5. Which statement is FALSE (only 1)
+
+- You can call 'docker-compose down' to stop the services in a docker-compose file
+- You publish a port by adding the EXPOSE tag in the Dockerfile
+- Named volumes should be used in production, host volumes are better for development
+- You cannot bind multiple applications to the same port ==== (F)
+
+6. Which statement is TRUE (only 1)
+
+- Environment variables are given to the program at runtime
+- You can mount a volume on a running container
+- You can publish a port on a running container
+- Dockerfiles are where you find the logs for your docker containers ==== (V)
+
+7. Which statement is TRUE (only 1)
+
+- You can run an image using a Dockerfile
+- You can store docker images in repositories like dockerHub
+- WORKDIR is a mandatory tag inside a Dockerfile ==== (V)
+- RUN command in Dockerfile is the first command that is run when a container is started
+
+8. True or False?
+You can only include 1 service inside a docker-compose.yaml file. If you would like to include more than 1, you must
+create multiple docker-compose.yaml files
+==== (F)
+
+9. Which address is the same as localhost?
+
+- 0.0.0.0
+- 127.0.0.1 ==== (V)
+- about:blank
+- 192.0.0.0
+
+10. Which of the following is TRUE (only 1)
+
+- The docker run -p takes an argument in the form of CONTAINER_PORT:HOST_PORT (eg. 8080:8081 maps container port 8080 to host port 8081) ==== (V)
+- Docker can run on Windows and Mac, but not linux
+- Docker is a programming language just like python, java, c++, etc
+- docker-compose has its own version (separate from docker version)

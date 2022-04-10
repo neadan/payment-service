@@ -1,0 +1,36 @@
+1. How would you explain docker's benefits to a colleague that has never heard of it? Include at least 2 benefits
+== First, it would be that it is much cheaper to use Docker than virtual machines.
+Second, it is very friendly and versatile for developers.
+
+2. A colleague would like to build an application that consists of multiple services:
+
+shopping-front (frontend for the shopping service)
+shopping-back (backend for the shopping service)
+shopping-db (database for the shopping service)
+
+They are wondering if docker-compose would be useful in their deployment.
+What is your opinion? Do you think they should use docker-compose for deployment,
+or is it better to use the docker pull/run commands? Please explain reasoning behind decision.
+
+=== I think you should use Docker-Compose for your projects, as it is a good tool for defining and running multi-container docker applications. Thanks to the YAML Docker compose files you can start with a single command you can start all services. It's a good tool.
+
+3. Give a specific example/use-case of why you would add a docker volume to a container. What are volumes used for?
+=== Volumes are used to store and exchange information regardless of the lifetime of a container. Volumes are like virtual hard drives managed by Docker.
+They allow us to store and exchange information between containers.
+
+4. From the following list, add either RUNTIME or BUILDTIME for the following elements:
+(are they executed/used at runtime or build time?)
+
+- docker run===RUNTIME
+- docker build===BUILDTIME
+- docker-compose up -d
+- Dockerfile
+- docker logs -f <container_id>
+- publishing ports
+- pip install -r requirements.txt===BUILDTIME
+- CMD flask run --host=0.0.0.0
+
+5. What is the difference between a host port and a container port? What is their relationship to each other?
+
+Hostport is available on the IP of the machine and
+the container port is available in the container IP.
