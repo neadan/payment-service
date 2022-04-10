@@ -4,11 +4,11 @@ services:
   payment-service:
     build: .
     environment:
-      POSTGRES_USER:
-      POSTGRES_PASSWORD:
+      POSTGRES_USER: myUser #credentials
+      POSTGRES_PASSWORD: myPassword #credentials
       POSTGRES_DB: payment_db
     ports:
-      - "6000:5000"
+      - "6000:5001" #change container port to 5001
   payment-db:
     build: postgres:14.2-alpine
     environment:
@@ -16,6 +16,6 @@ services:
       POSTGRES_PASSWORD:
       POSTGRES_DB: payment_db
     ports:
-      - "6000:5432"
+      - "5432:5432" #change host port to 5432
     volumes:
       - payment-db-vol:/var/lib/postgresql/data
