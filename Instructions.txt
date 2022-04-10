@@ -1,0 +1,57 @@
+The final exam will be divided into 3 parts:
+
+===Multiple Choice=== (20%)
+Fill out the multiple_choice.txt file on the left.
+
+===Theory=== (20%)
+Fill out the theory.txt file on the left.
+
+===Exercises=== (60%)
+Part 1
+You start at a new company. They are going through a project of dockerizing all of their applications.
+Your first task is to dockerize the payment-service application.
+You can find the application here: https://github.com/neadan/payment-service.git
+Note: the project is written in python 3.10
+
+***For this part, ignore the docker-compose.yaml file***
+Steps:
+- Clone the repo
+    git clone https://github.com/neadan/payment-service.git
+- Create a new feature branch, call it feature/YOUR_NAME
+   git checkout -b feature/YOUR_NAME
+- Create your Dockerfile
+- Build image
+- Test your build by running the application and visiting the endpoint /api/v1/home
+- Push your changes to your feature branch
+  git add Dockerfile
+  git push -u origin feature/YOUR_NAME
+
+Part 2
+You would like to add the following features to the project:
+- A postgres database service (called payment-db) -- your payment-service must depend on payment-db
+- A named volume called postgres-db for your payment-db service
+- docker-compose.yaml file for deployment
+
+Luckily, a colleague has helped you with by starting a docker-compose.yaml file, however he tells you that there
+may be errors (sorry).
+
+Steps:
+- Enter the credentials for the postgres database AND service in the docker-compose file:
+    POSTGRES_USER: myUser
+    POSTGRES_PASSWORD: myPassword
+- Run the docker-compose file and try to debug the errors (hint there are 3) -- comment your changes in the docker-compose
+- Make sure your payment-service depends on payment-db
+- When services are up, try to visit the /api/v1/home endpoint
+- Push your changes to your feature branch
+  git add docker-compose.yaml
+  git push
+
+!!!!IMPORTANT!!!!
+When you are done, copy the multiple_choice and theory files to the payment service repo you cloned in the Exercises section, and push the changes as well:
+  git add multiple_choice
+  git add theory
+  git push
+
+
+
+

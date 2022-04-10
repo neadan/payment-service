@@ -1,0 +1,36 @@
+1. How would you explain docker's benefits to a colleague that has never heard of it? Include at least 2 benefits
+
+Docker is an open source containerization platform. It helps developers to package applications into containers, which combines source code with the operating system libraries and dependencies required to run application in any environment. First benefit is its portable, Once you have tested your application locally you can deploy it to any other system where Docker is running and you can be sure that your application will perform exactly as it did when you tested it locally. Secondly, Performance - although virtual machines are an alternative to containers, the fact that containers do not contain an operating system (whereas virtual machines do) means that containers have much smaller footprints than virtual machines, are faster to create, and quicker to start.
+
+2. A colleague would like to build an application that consists of multiple services:
+
+shopping-front (frontend for the shopping service)
+shopping-back (backend for the shopping service)
+shopping-db (database for the shopping service)
+
+They are wondering if docker-compose would be useful in their deployment.
+What is your opinion? Do you think they should use docker-compose for deployment,
+or is it better to use the docker pull/run commands? Please explain reasoning behind decision.
+
+They should use Docker-compose to deploy code to next environments. Docker Compose is used for configuring and starting multiple Docker containers on the same server – so you don’t have to start each container separately. This allows us to deploy everything(Frontend and Backend) to a single server. If you use containers but not Docker Compose, you need to provide scripts that describes how your app (frontend|backend) interact and combine on which ports they use, their like environment variables. Docker Compose facilitates this and provides a convenient mechanism to describe how to combine into one.
+
+
+3. Give a specific example/use-case of why you would add a docker volume to a container. What are volumes used for?
+Docker containers are used to run applications in an isolated environment. By default, all the changes inside the container are lost when the container stops. If we want to keep data between runs of containers, Docker volumes can help. In order to be able to save persistent data and also to share data between containers volumes are used. For Example, we will create a directory on the host/server, and use that directory as a shared volume between two containers.
+
+
+4. From the following list, add either RUNTIME or BUILDTIME for the following elements:
+(are they executed/used at runtime or build time?)
+
+- docker run - RUNTIME
+- docker build - BUILDTIME
+- docker-compose up -d -RUNTIME
+- Dockerfile  - BUILDTIME
+- docker logs -f <container_id> -RUNTIME
+- publishing ports - RUNTIME
+- pip install -r requirements.txt  - BUILDTIME
+- CMD flask run --host=0.0.0.0 - RUNTIME
+
+5. What is the difference between a host port and a container port? What is their relationship to each other?
+	Container port is available on the container where your app is on ,Hostport is available on the machine's IP. Hostport is to connect container port. When you run a container, if you want to access the application in the container via a port number, you need to map the port number of the container to the port number of the host.
+
