@@ -1,0 +1,48 @@
+1. How would you explain docker's benefits to a colleague that has never heard of it? Include at least 2 benefits
+***Docker is a way you put your codes in a little box.with all requirements of running the codes.so you will have
+isolated predictable environment.and regardless of where the app is deployed,everything remains consistent and as a result
+you loss less time on debugging.Regardless of you programming language(Python,java,c,...) or your operating system
+(Windows,Linux,Mac Os,..) ,you can use docker for creating image of you codes.The process is the same.
+
+
+
+2. A colleague would like to build an application that consists of multiple services:
+
+shopping-front (frontend for the shopping service)
+shopping-back (backend for the shopping service)
+shopping-db (database for the shopping service)
+
+They are wondering if docker-compose would be useful in their deployment.
+What is your opinion? Do you think they should use docker-compose for deployment,
+or is it better to use the docker pull/run commands? Please explain reasoning behind decision.
+
+
+***Docker allows you to create an image of an application or just one service.But docker-compose will ley tou create multiple image of an app
+that the services inside have interact with each other.and in addition with docker compose we don''t need to do build an
+image ,run image separately.docker-compose will do it with just one command "docker-compose up -d".
+
+3. Give a specific example/use-case of why you would add a docker volume to a container. What are volumes used for?
+
+***when in our app we have a post method that should store a data somewhere , we use volume to the container.with the volume
+we are sure that our data will save inside the container.so long as we have our host server we have our data and
+it will retrievable
+
+4. From the following list, add either RUNTIME or BUILDTIME for the following elements:
+(are they executed/used at runtime or build time?)
+
+- docker run-->runtime
+- docker build-->build time
+- docker-compose up -d-->both
+- Dockerfile-->build time
+- docker logs -f <container_id>-->runtime
+- publishing ports-->runtime
+- pip install -r requirements.txt-->build time
+- CMD flask run --host=0.0.0.0-->runtime
+
+5. What is the difference between a host port and a container port? What is their relationship to each other?
+
+***when we run a container it will run on a port inside the docker we call it container port.when we want to make a
+port available outside the docker , we should publish a port by mapping the container port to a port
+on the docker host on outside the docker container. with below command we can publish and map a port on Docker host.
+
+-p 6000:5000  :Map port 5000 in the container to port 6000 on the Docker host

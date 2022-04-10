@@ -1,21 +1,26 @@
 version: '3.8'
 
+volumes: # add volume to store data
+  postgres-db:
+
 services:
   payment-service:
     build: .
     environment:
-      POSTGRES_USER:
-      POSTGRES_PASSWORD:
+      POSTGRES_USER: myUser
+      POSTGRES_PASSWORD: myPassword
       POSTGRES_DB: payment_db
     ports:
-      - "6000:5000"
+      - "5000:5000"#  has conflit with port 6000.it should change to the other port than 6000
+    depends_on: # add dependencies
+      - payment-db
   payment-db:
-    build: postgres:14.2-alpine
+    image: postgres:14.2-alpine #should be image not build
     environment:
-      POSTGRES_USER:
-      POSTGRES_PASSWORD:
+      POSTGRES_USER: myUser
+      POSTGRES_PASSWORD: myPassword
       POSTGRES_DB: payment_db
     ports:
       - "6000:5432"
     volumes:
-      - payment-db-vol:/var/lib/postgresql/data
+      - postgres-db:/var/lib/postgresql/data
