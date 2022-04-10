@@ -9,8 +9,10 @@ services:
       POSTGRES_DB: payment_db
     ports:
       - "6000:5000"
+    depends_on:
+      - payment-db       #error here
   payment-db:
-    build: postgres:14.2-alpine
+    image: postgres:14.2-alpine #error here
     environment:
       POSTGRES_USER:
       POSTGRES_PASSWORD:
@@ -18,4 +20,4 @@ services:
     ports:
       - "6000:5432"
     volumes:
-      - payment-db-vol:/var/lib/postgresql/data
+      - postgres-db:/var/lib/postgresql/data #error here
