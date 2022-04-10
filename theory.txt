@@ -1,0 +1,42 @@
+1. How would you explain docker's benefits to a colleague that has never heard of it? Include at least 2 benefits
+
+Compatibilily --- when you create a docker image it eliminates the issue "but it works on my machine" because your image runs the same no matter which 
+server or whose machine is running on.
+
+Maintainability --- developers spend less time setting up enviroments, debugging enviroments specific issues, and the production infrastructure will be
+more reliable and easier to maintain.
+
+2. A colleague would like to build an application that consists of multiple services:
+
+shopping-front (frontend for the shopping service)
+shopping-back (backend for the shopping service)
+shopping-db (database for the shopping service)
+
+They are wondering if docker-compose would be useful in their deployment.
+What is your opinion? Do you think they should use docker-compose for deployment,
+or is it better to use the docker pull/run commands? Please explain reasoning behind decision.
+
+the best option it would be to use docker-compose because they are going to have two container, one for the database and the other for the backend which
+will serve the page and in case the the database grows it is going to be easier to make the changes required and easier to debug 
+
+3. Give a specific example/use-case of why you would add a docker volume to a container. What are volumes used for?
+
+the docker volume it's going to be usefull anywhere where you need to save and store persist data, so being that said in any application that you need 
+to store data you'll use volumes, a todo list, an inventory, food-tracker, etc...
+
+4. From the following list, add either RUNTIME or BUILDTIME for the following elements:
+(are they executed/used at runtime or build time?)
+
+- docker run ****RUNTIME
+- docker build ****BUILDTIME
+- docker-compose up -d ****RUNTIME
+- Dockerfile ****RUNTIME
+- docker logs -f <container_id> ****BUILDTIME 
+- publishing ports ****BUILDTIME
+- pip install -r requirements.txt ****BUILDTIME
+- CMD flask run --host=0.0.0.0 ****BUILDTIME
+
+5. What is the difference between a host port and a container port? What is their relationship to each other?
+host port is a port that specifies the port of the host to bind to 
+container port specifies a port within the container 
+the relationship between the two of them is that you need the two of them for port mapping in able to stablish a connection.
